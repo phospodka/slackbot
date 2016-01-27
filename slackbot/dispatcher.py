@@ -54,6 +54,10 @@ class MessageDispatcher(object):
         except (KeyError, TypeError):
             if 'username' in msg:
                 username = msg['username']
+            # pdh extra section for bot messages
+            elif 'bot_id' in msg:
+                username = msg['bot_id']
+                msg['text'] = '#bot_text'
             else:
                 return
 
